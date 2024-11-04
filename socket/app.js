@@ -1,6 +1,6 @@
 import { Server } from "socket.io";
 
-const io = new Server({
+const io = new Server(server, {
   cors: {
     origin: "https://real-estate-full-stack-client.onrender.com",
   },
