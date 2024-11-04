@@ -1,5 +1,11 @@
+import express from "express";
 import { Server } from "socket.io";
+import http from "http";
 
+const app = express();
+const server = http.createServer(app);
+
+// Set up Socket.io to listen on the same server
 const io = new Server(server, {
   cors: {
     origin: "https://real-estate-full-stack-client.onrender.com",
@@ -9,8 +15,8 @@ const io = new Server(server, {
 let onlineUser = [];
 
 const addUser = (userId, socketId) => {
-  const userExits = onlineUser.find((user) => user.userId === userId);
-  if (!userExits) {
+  const userExists = onlineUser.find((user) => user.userId === userId);
+  if (!userExists) {
     onlineUser.push({ userId, socketId });
   }
 };
@@ -24,21 +30,27 @@ const getUser = (userId) => {
 };
 
 io.on("connection", (socket) => {
+  console.log("A user connected:", socket.id);
+
   socket.on("newUser", (userId) => {
     addUser(userId, socket.id);
   });
 
   socket.on("sendMessage", ({ receiverId, data }) => {
     const receiver = getUser(receiverId);
-    io.to(receiver.socketId).emit("getMessage", data);
+    if (receiver) {
+      io.to(receiver.socketId).emit("getMessage", data);
+    }
   });
 
   socket.on("disconnect", () => {
+    console.log("A user disconnected:", socket.id);
     removeUser(socket.id);
   });
 });
 
-const PORT = process.env.PORT || 4000; 
+// Instead of io.listen(), use server.listen()
+const PORT = process.env.PORT || 4000; // Default to 4000 for local development
 server.listen(PORT, () => {
-  console.log(`Socket.io server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
