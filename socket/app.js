@@ -2,7 +2,7 @@ import { Server } from "socket.io";
 
 const io = new Server({
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://real-estate-full-stack-client.onrender.com",
   },
 });
 
@@ -38,4 +38,7 @@ io.on("connection", (socket) => {
   });
 });
 
-io.listen("4000");
+const PORT = process.env.PORT || 4000; 
+server.listen(PORT, () => {
+  console.log(`Socket.io server is running on port ${PORT}`);
+});
