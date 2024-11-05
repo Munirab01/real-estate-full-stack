@@ -9,6 +9,8 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: "https://real-estate-full-stack-client.onrender.com",
+     methods: ["GET", "POST"],
+     credentials: true
   },
 });
 
