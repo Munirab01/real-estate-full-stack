@@ -10,7 +10,7 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     // Use an environment variable for the socket URL
-    const socketUrl = process.env.REACT_APP_SOCKET_URL || "http://localhost:4000"; // Default to localhost if not set
+    const socketUrl ="https://real-estate-full-stack-socket.onrender.com";
     console.log("Connecting to socket at:", socketUrl);
     const newSocket = io(socketUrl);
     setSocket(newSocket);
