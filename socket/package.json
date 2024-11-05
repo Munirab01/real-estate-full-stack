@@ -12,7 +12,8 @@
   "dependencies": {
     "socket.io": "^4.7.5",
      "express": "^4.21.1",
-    "http": "^0.0.1-security"
+    "http": "^0.0.1-security",
+    "cors": "^2.8.5"
   },
   "description": ""
 }
