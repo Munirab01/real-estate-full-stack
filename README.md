@@ -132,4 +132,72 @@ graph TB
     MessageController -->|"Validates"| TokenVerifier
 ```
 
+```plaintext
+InstantEstate/
+├── .gitignore
+├── README.md
+├── client/                     # Frontend (React + Vite)
+│   ├── public/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── pages/
+│   │   ├── router/
+│   │   └── utils/
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.js
+├── server/                     # Backend (Node.js + Express)
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── socket/
+│   ├── utils/
+│   ├── app.js
+│   ├── server.js
+│   ├── .env
+│   ├── prisma/
+│   │   └── schema.prisma
+│   └── package.json
+├── prisma/
+│   └── schema.prisma
+└── LICENSE
+```
+
+## Getting Started
+### Prerequisites
+Node.js and npm installed
+
+MongoDB set up locally or using MongoDB Atlas
+
+### Installation
+Clone the repository:
+- git clone https://github.com/your-username/InstantEstate.git
+- cd InstantEstate
+
+### Set up environment variables:
+In the /server/.env file:
+- PORT=5000 ,
+- MONGO_URI=your_mongodb_uri ,
+- JWT_SECRET=your_jwt_secret 
+
+### Install backend dependencies:
+- cd server
+- npm install
+
+### Install frontend dependencies:
+- cd ../client
+- npm install
+
+### Running the Application
+### Start Backend Server:
+- cd server
+- npm run dev
+### Start Frontend Client:
+- cd client
+- npm run dev
+
+Visit [http://localhost:5173](http://localhost:5173) to view the app.
  
