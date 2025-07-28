@@ -39,7 +39,7 @@ function Navbar() {
         ) : (
           <>
             <Link href="/login">Sign in</Link>
-            <Lnk href="/register" className="register">
+            <Link href="/register" className="register">
               Sign up
             </Link>
           </>
